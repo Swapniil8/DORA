@@ -1,0 +1,10 @@
+<div class="container"> 
+    <div *ngIf="!gameover">
+        <h1> Its {{character}}'s turn</h1>
+        <p class="winning-heading" *ngIf="player">{{player}} wins</p>
+    </div>
+    <div *ngIf="gameover">
+        <h1 class="winning">{{character}} wins</h1>
+    </div>
+    <button class="button-to-turn" (click)="changePlayer() ">Click for next turn</button>
+</div>

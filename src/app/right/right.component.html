@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="card-container" *ngIf="!available">
+        <div class="image-container" *ngIf="(character)">
+            <img [src]="image" alt="Currently no picture available" class="image">
+        </div>
+        <div *ngIf="(character)">
+            <h1 class="name-heading">{{name}}</h1>
+        </div>
+        <div class="attribute-container" *ngIf="(character)">
+
+            <div class="left-attributes">
+                <p (click)="attributeClicked('height')"> <span>Height</span> : {{height}} ft</p>
+                <p (click)="attributeClicked('iq')"> <span>IQ</span> : {{iq}}</p>
+                <p (click)="attributeClicked('height')"> <span>Height</span> : {{height}} ft</p>
+                <p (click)="attributeClicked('height')"> <span>Height</span> : {{height}} ft</p>
+                <p (click)="attributeClicked('height')"> <span>Height</span> : {{height}} ft</p>
+            </div>
+            <div class="right-attributes">
+                <p (click)="attributeClicked('weight')"> <span>Weight</span> : {{weight}} kgs</p>
+                <p (click)="attributeClicked('popularity')"> <span>Popularity</span> : {{popularity}}</p>
+                <p (click)="attributeClicked('weight')"> <span>Weight</span> : {{weight}} kgs</p>
+                <p (click)="attributeClicked('weight')"> <span>Weight</span> : {{weight}} kgs</p>
+                <p (click)="attributeClicked('weight')"> <span>Weight</span> : {{weight}} kgs</p>
+            </div>
+        </div>
+        <div >
+            <!-- *ngIf="(character == 'player2')" -->
+        </div>
+        <div *ngIf="!(character)">
+            <h1> player2's player is hidden</h1>
+        </div>
+
+    </div>
+    <div *ngIf="available">
+        There is nothing to show
+    </div>
+</div>

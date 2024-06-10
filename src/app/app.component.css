@@ -1,0 +1,13 @@
+.top-bar{
+    height: 20vh;
+    
+}
+.body{
+    display: flex;
+    flex-direction: row;
+
+}
+.w-50{
+    width: 50%;
+    height: 80vh;
+}
