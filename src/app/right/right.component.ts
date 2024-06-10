@@ -15,6 +15,8 @@ export class RightComponent {
   height:any = '5 ft'
   weight:any = "35kgs"
   iq:any;
+  bravery:any;
+  honesty:any;
   popularity:any;
   available:any = false
   @Input() rightCards:any;
@@ -32,6 +34,8 @@ export class RightComponent {
       this.weight = this.rightCards[0].weight
       this.image = this.rightCards[0].image
       this.iq = this.rightCards[0].iq
+      this.bravery = this.rightCards[0].bravery
+      this.honesty = this.rightCards[0].honesty
       this.popularity = this.rightCards[0].popularity
     }else{
       this.available = true

@@ -28,6 +28,8 @@ export class AppComponent {
   displayRight:any;
   player1:any = true;
   player2:any = false;
+  drawCards:any;
+  draw:any = false
   @ViewChild(LeftComponent) leftComponent!: LeftComponent;
   @ViewChild(RightComponent) rightComponent!: RightComponent;
   @ViewChild(HeadingComponent) headingComponent!: HeadingComponent;
@@ -63,6 +65,7 @@ export class AppComponent {
         this.displayLeft = true
         this.player1 = true
         this.player2 = true
+        this.draw = false
         setTimeout(() => {
           
           // let leftFirstCard = this.leftCards[0]
@@ -77,6 +80,10 @@ export class AppComponent {
           this.gameover = true
           // this.changePlayerTo()
         }
+        if(this.drawCards){
+          this.leftCards.push(...this.drawCards)
+        }
+        this.drawCards = ''
         setTimeout(() => {
           this.player = ''
         }, 3000);
@@ -85,6 +92,7 @@ export class AppComponent {
         this.displayRight = true
         this.player1 = true
         this.player2 = true
+        this.draw = false
         setTimeout(() => {
           // let rightFirstCard = this.rightCards[0]
           // this.rightCards.push(rightFirstCard)
@@ -98,9 +106,23 @@ export class AppComponent {
           this.gameover = true
           // this.changePlayerTo()
         }
+        if(this.drawCards){
+          this.rightCards.push(...this.drawCards)
+          this.drawCards = ''
+        }
         setTimeout(() => {
           this.player = ''
         }, 3000);
+      }else{
+        this.draw = true
+        this.drawCards = [this.leftCards[0],this.rightCards[0]]
+        this.leftCards.splice(0,1)
+        this.rightCards.splice(0,1)
+        if(this.leftCards.length == 0 &&this.rightCards == 0){
+          // this.draw = true 
+          // this.gameover = false
+        }else{
+        }
       }
     }
     setTimeout(() => {
@@ -113,28 +135,32 @@ export class AppComponent {
   }
   changePlayerTo(event?:any){
     console.log("this.displayright",this.displayRight,this.displayLeft)
-    if(this.displayLeft){
-      this.player2= false
-      let leftFirstCard = this.leftCards[0]
-      this.leftCards.push(leftFirstCard)
-      this.leftCards.push(this.rightCards[0])
-      this.leftCards.splice(0,1)
-      this.rightCards.splice(0,1)
-      this.leftComponent.ngOnInit()
-      this.rightComponent.ngOnInit()
-    
+    if(this.gameover){
 
-    }
-    else if(this.displayRight){
-      this.player1 = false
-      let rightFirstCard = this.rightCards[0]
-      this.rightCards.push(rightFirstCard)
-      this.rightCards.push(this.leftCards[0])
-      this.rightCards.splice(0,1)
-      this.leftCards.splice(0,1)
-      this.leftComponent.ngOnInit()
-      this.rightComponent.ngOnInit()
-
+    }else{
+      if(this.displayLeft){
+        this.player2= false
+        let leftFirstCard = this.leftCards[0]
+        this.leftCards.push(leftFirstCard)
+        this.leftCards.push(this.rightCards[0])
+        this.leftCards.splice(0,1)
+        this.rightCards.splice(0,1)
+        this.leftComponent.ngOnInit()
+        this.rightComponent.ngOnInit()
+      
+  
+      }
+      else if(this.displayRight){
+        this.player1 = false
+        let rightFirstCard = this.rightCards[0]
+        this.rightCards.push(rightFirstCard)
+        this.rightCards.push(this.leftCards[0])
+        this.rightCards.splice(0,1)
+        this.leftCards.splice(0,1)
+        this.leftComponent.ngOnInit()
+        this.rightComponent.ngOnInit()
+  
+      }
     }
   }
 }

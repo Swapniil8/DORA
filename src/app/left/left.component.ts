@@ -15,6 +15,8 @@ export class LeftComponent {
   weight:any = "35kgs"
   image:any = 'https://www.noggin.com/app/uploads/2019/06/Dora-Copy.jpg'
   iq:any;
+  bravery:any;
+  honesty:any;
   popularity:any;
   availble:any = false
   @Input() leftCards:any;
@@ -32,6 +34,8 @@ export class LeftComponent {
       this.weight = this.leftCards[0].weight
       this.image = this.leftCards[0].image
       this.iq = this.leftCards[0].iq
+      this.bravery = this.leftCards[0].bravery
+      this.honesty = this.leftCards[0].honesty
       this.popularity = this.leftCards[0].popularity
       
 

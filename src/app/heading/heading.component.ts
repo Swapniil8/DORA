@@ -12,6 +12,7 @@ export class HeadingComponent {
   @Input() character:any = 'Swapnil'
   @Input() player:any;
   @Input() gameover:any
+  @Input() draw:any
   @Output() changePlayerTo = new EventEmitter()
   ngOnInit(): void {
   }

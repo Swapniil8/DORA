@@ -6,5 +6,8 @@
     <div *ngIf="gameover">
         <h1 class="winning">{{character}} wins</h1>
     </div>
+    <div *ngIf="draw ">
+        <h1 class="winning">It's Draw</h1>
+    </div>
     <button class="button-to-turn" (click)="changePlayer() ">Click for next turn</button>
 </div>
