@@ -9,5 +9,5 @@
     <div *ngIf="draw ">
         <h1 class="winning">It's Draw</h1>
     </div>
-    <button class="button-to-turn" (click)="changePlayer() ">Click for next turn</button>
+    <button class="button-to-turn" (click)="changePlayer()" *ngIf="!draw && changeButton">Click for next turn</button>
 </div>

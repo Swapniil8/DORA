@@ -1,13 +1,14 @@
 <!-- <button (click)="clicked()">click</button> -->
 <div>
   <div class="top-bar">
-    <app-heading [player]="player" [character]="character" [gameover]="gameover" [draw]="draw" (changePlayerTo)="changePlayerTo($event)"></app-heading>
+    <app-heading [player]="player" [character]="character" [gameover]="gameover" [draw]="draw" (changePlayerTo)="changePlayerTo($event)"
+    [changeButton]="changeButton"></app-heading>
   </div>
   <div class="body">
-    <div class="w-50">
+    <div class="w-50" [ngClass]="[clickable?'clickable':'']">
       <app-left [leftCards]="leftCards" (attributeOutput)="attributeOutput($event)" [character]="player1" [displayLeft]="displayLeft"></app-left>
     </div>
-    <div class="w-50">
+    <div class="w-50" [ngClass]="[clickable?'clickable':'']">
       <app-right [rightCards]="rightCards" (attributeOutput)="attributeOutput($event)" [character]="player2" [displayRight]="displayRight"></app-right>
     </div>
   </div>

@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CommonModule } from '@angular/common';
 import { HeadingComponent } from './heading/heading.component';
 import { LeftComponent } from './left/left.component';
 import { RightComponent } from './right/right.component';
@@ -11,7 +12,8 @@ import { CharactersService } from './characters.service';
   imports: [RouterOutlet,
     HeadingComponent,
     LeftComponent,
-    RightComponent],
+    RightComponent,
+    CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -30,10 +32,13 @@ export class AppComponent {
   player2:any = false;
   drawCards:any;
   draw:any = false
+  changeButton:any;
+  clickable:any = false
   @ViewChild(LeftComponent) leftComponent!: LeftComponent;
   @ViewChild(RightComponent) rightComponent!: RightComponent;
   @ViewChild(HeadingComponent) headingComponent!: HeadingComponent;
   ngOnInit(): void {
+    
     this.charactersOfDora = this.characters.characters
     this.suffle(this.charactersOfDora)
   }
@@ -76,6 +81,7 @@ export class AppComponent {
         }, 1000);
         this.character = 'Swapnil'
         this.player = 'Swapnil'
+        this.clickable = true
         if(this.rightCards.length == 1){
           this.gameover = true
           // this.changePlayerTo()
@@ -84,9 +90,8 @@ export class AppComponent {
           this.leftCards.push(...this.drawCards)
         }
         this.drawCards = ''
-        setTimeout(() => {
-          this.player = ''
-        }, 3000);
+        this.changeButton = true
+        this.player = ''
       }else if(parseFloat(this.leftCards[0][event.name])<parseFloat(this.rightCards[0][event.name])){
         this.displayLeft = false
         this.displayRight = true
@@ -102,6 +107,8 @@ export class AppComponent {
         }, 1000);
         this.character = "player2"
         this.player = "Player2"
+        this.changeButton = 'true'
+        this.clickable = true
         if(this.leftCards.length == 1){
           this.gameover = true
           // this.changePlayerTo()
@@ -110,9 +117,7 @@ export class AppComponent {
           this.rightCards.push(...this.drawCards)
           this.drawCards = ''
         }
-        setTimeout(() => {
-          this.player = ''
-        }, 3000);
+        this.player = ''
       }else{
         this.draw = true
         this.drawCards = [this.leftCards[0],this.rightCards[0]]
@@ -134,7 +139,8 @@ export class AppComponent {
     // console.log("this.rightcards",this.rightCards)
   }
   changePlayerTo(event?:any){
-    console.log("this.displayright",this.displayRight,this.displayLeft)
+    this.changeButton = false
+    this.clickable = false
     if(this.gameover){
 
     }else{

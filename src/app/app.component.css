@@ -11,3 +11,6 @@
     width: 50%;
     height: 80vh;
 }
+.clickable{
+    pointer-events: none;
+}
